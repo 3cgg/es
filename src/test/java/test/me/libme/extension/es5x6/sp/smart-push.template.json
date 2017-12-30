@@ -1,0 +1,49 @@
+{
+  "template": "cpp-smart-push-index",
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "smart-push": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "title": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+        "summary": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart"
+        },
+        "link": {
+          "type": "keyword"
+        },
+        "storageTime": {
+          "type": "keyword"
+        },
+        "createDate": {
+          "type": "keyword"
+        },
+        "modifyDate": {
+          "type": "date"
+        },
+        "categoryCode": {
+          "type": "keyword"
+        }
+
+      }
+    }
+  }
+}

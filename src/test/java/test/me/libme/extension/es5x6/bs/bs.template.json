@@ -1,0 +1,105 @@
+{
+  "template": "cpp-bs-index",
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "bs": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "id": {
+          "type": "keyword"
+        },
+        "firstPicId": {
+          "type": "keyword"
+        },
+        "status": {
+          "type": "keyword"
+        },
+        "approve": {
+          "type": "keyword"
+        },
+        "isReliable": {
+          "type": "keyword"
+        },
+        "isAvaliable": {
+          "type": "keyword"
+        },
+        "codeType": {
+          "type": "keyword"
+        },
+        "dataSource": {
+          "type": "keyword"
+        },
+        "firstPicPath": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+        "publish_name": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+        "introduction": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+        "technicalFieldName": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+
+        "label": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+
+        "title": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "keyword":{
+              "type": "keyword"
+            }
+          }
+        },
+        "modifyDate": {
+          "type": "date"
+        }
+
+      }
+    }
+  }
+}

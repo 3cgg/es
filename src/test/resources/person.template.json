@@ -1,0 +1,39 @@
+{
+  "template": "person-index",
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "person": {
+      "_source": {
+        "enabled": true
+      },
+      "properties": {
+        "uniqueId": {
+          "type": "keyword"
+        },
+        "name": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart",
+          "fields":{
+            "raw":{
+              "type": "keyword"
+            }
+          }
+        },
+        "age": {
+          "type": "long"
+        },
+        "desc": {
+          "type": "text",
+          "analyzer": "ik_smart",
+          "search_analyzer": "ik_smart"
+        },
+        "deleted": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}
