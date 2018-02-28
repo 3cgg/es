@@ -1,5 +1,6 @@
 package me.libme.module.es5x6;
 
+import me.libme.kernel._c.util.JStringUtils;
 import org.apache.http.Header;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
@@ -59,16 +60,19 @@ public class RestHighLevelClientBuilder {
             defaultHeaders.add(new BasicHeader(header.getKey(), header.getValue()));
         }
         builder.setDefaultHeaders(defaultHeaders.toArray(new Header[]{}));
-        final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(AuthScope.ANY,
-                new UsernamePasswordCredentials(esConfig.getUserName(),esConfig.getPassword()));
-        builder.setHttpClientConfigCallback(new RestClientBuilder.HttpClientConfigCallback() {
-            @Override
-            public HttpAsyncClientBuilder customizeHttpClient(HttpAsyncClientBuilder httpClientBuilder) {
-                httpClientBuilder.disableAuthCaching();
-                return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
-            }
-        });
+
+        if(JStringUtils.isNotNullOrEmpty(esConfig.getUserName())){
+            final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+            credentialsProvider.setCredentials(AuthScope.ANY,
+                    new UsernamePasswordCredentials(esConfig.getUserName(),esConfig.getPassword()));
+            builder.setHttpClientConfigCallback(new RestClientBuilder.HttpClientConfigCallback() {
+                @Override
+                public HttpAsyncClientBuilder customizeHttpClient(HttpAsyncClientBuilder httpClientBuilder) {
+                    httpClientBuilder.disableAuthCaching();
+                    return httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider);
+                }
+            });
+        }
 
         RestClient restClient= builder.build();
 
